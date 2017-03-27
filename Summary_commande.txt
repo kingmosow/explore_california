@@ -133,7 +133,8 @@ git branch -r
 git branch -a
 //copier un branch a partir du serveur
 git clone https://github.com/winzou/mooc-symfony.git
-
+//cree le repository sur le serveur sans suivre ses modif
+git push -u origin pas_suivi
 
 
 
