@@ -1,0 +1,148 @@
+Pour configurer git 
+git config --global user.name "Moussa sow"
+git config --global user.email "moussa@htomail.com"
+git config --list
+git config --global core.editor "notepad.txt" 
+configuration la coloration des synthaxes
+git config --global color.ui true
+cat .gitonfig
+
+git init
+git add .
+git add nom-fichier  || git reset HEAD nom-fichier (Pour ne plu suive un fichier
+git commit -m "message"
+git commit -am "message" (pour ajouter en mm tps le ficier et le commit)
+gir rm nom-fichier
+git status
+git log
+git commit --amend - "use same message" (pour changer le commit)
+git diff ou git log HEAD
+git diff --staged
+git diff --cached
+git checkout -- nom-fichier
+
+git checkout id-commit nom-fichier (recuperer a partir de l'id du commit)
+git revert id-commit (modifier le commit)
+
+git clean -f (pour supprimer du repository les fichiers non suivi)
+creer un dossier .gitignore dans lekel on insert les oms des fihiers a igniorer
+exple: 
+empfile.txt
+*.zip
+*.gz
+log/*.log
+log/*.log.[0-9]
+assets/photoshop/
+assets/videos/
+!assets/videos/tour_*.mp4
+apres ajouter le fichier  .gitignore dans le repository avant de faire le commit
+//List the contents of a tree object
+git ls-tree nom-repertoire (soit HEAD, master,ou master dossier)
+//lister le contenu du repertoire avant le dernier commit
+git ls-tree master^ nom-repertoire
+//lister les log en ayant un vue sur les modifications effectuées
+git log -p
+//lister les modifications effectuées avec git
+git log --stat --summary
+//lister tous les commit
+git log --oneline
+git log --format=oneline
+git log --format=short
+git log --graph
+git log --oneline --graph --all --decorate
+
+git show id (id=dossier, fichier commit)
+//Pour avoir les difference entre un commit et le dossier actuel
+git diff id-commit (id-commit=SHA)
+//Pour voir les difference entre les 2 commit
+git diff id-commit1 id-commit2 (id-commit=SHA)
+git diff id-commit1 HEAD
+//Pour visualiser les modif effectuées depuis l'id-commit 
+git diff --stat --summary id-commit..HEAD
+
+git diff --ignore-space-change id-commit..HEAD (--ignore-space-change=-b, -w (pour all))
+
+
+/***************************Branch************************************\
+//La reference du git pointer
+cat .git/HEAD
+//
+git branch
+git branch nom_branch
+//repertoire des branches
+ls -la .git/refs/heads
+//Pour changer de branche
+git checkout nom-branch
+//create and switch sur un banch en mm tps
+git checkout -b nom-branch
+
+//Pour visualiser les modifications effectuées sur chak branch
+git log --graph --oneline --decorate --all
+
+//Comparer les modifications sur 2 branches
+git diff nom-branch1..nom-branch2
+git diff nom-branch1..nom-branch2^
+//pour voir les branch liées
+git branch --merged
+//renommer une branch
+git branch -m nom-branch nom_nouveau_branch
+//Pour supprimer une branch
+git branch -d nom_branch
+//Pour personnaliser le console on utilise la variable PS1
+//dans notre cas on donne le nom kingmo au console
+export PS1='KingMo$'
+//retourner le nom du dossier courant et du branch
+export PS1='\W$(__git_ps1 "(%s)")>'
+nb:config active jusqu'au redemarrage du console
+//fusionné branch courant
+git merge nom_branch
+//Pour annuler la fusion
+git merge --abort
+//on peut utiliser un git merge tool aussi pour gerer les conflict de fusion
+
+//log colorié
+git log --graph --oneline --all --decorate
+
+//stash (on peut soit commit ou stash lorskon travail sur des branch
+git stash save "change mission page title"
+//lister des stash et cette liste est disponible a partir de n'importe kel branch
+git stash list
+//Pour consulter les modifications effectuées au sein d'un stash
+git stash show id_stash
+git stash show -p stash@{0}
+//la commande suivante permet de merge le contenu du stash en laissant une copie
+git stash pop stash@{0}
+git stash apply stash@{0} (nb:ne supprime pas l stash)
+//pour supprimer le stash
+git stash drop stash@{0}
+//Pour supprimer tous les stash d'un coup sans possiblité de merge
+git stash clear
+*******************************remote***********************************
+//Pour lister les serveurs git sur leskel, on est connecté
+git remote
+git remote -v
+cat .git/config
+//Pour se connecter a un serveur git
+git remote add origin https://github.com/kingmosow/explore_california.git
+//Pour se deconnecter du serveur
+git remote rm origin (origin c'est le nom kon a donné a notre serveur)
+//Creer la branch master sur le serveur
+git push -u origin master
+//Pour lister les branches du serveur
+git branch -r
+git branch -a
+//copier un branch a partir du serveur
+git clone https://github.com/winzou/mooc-symfony.git
+
+
+
+
+
+
+
+
+
+
+
+
+
