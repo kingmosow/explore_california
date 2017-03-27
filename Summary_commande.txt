@@ -135,7 +135,30 @@ git branch -a
 git clone https://github.com/winzou/mooc-symfony.git
 //cree le repository sur le serveur sans suivre ses modif
 git push -u origin pas_suivi
-
+//pour suivre le repository
+git braanch --set-upstream pas_suivi origin/pas_suivi
+//Permet de lister la diff entre notre branch sur le serveur et celui en local
+git diff origin/master..master
+//Mettre les modications sur notre serveur
+git push
+//A partir de notre repository partagé, pour recuperer les modifications dsur le repository, on fait la commande suivante:
+git fetch origin
+//les moments pour faire un fetch
+fetch avant de commencer a travailler sur le repository
+fetch avant de faire un push
+faire un fetch souvent
+//pour faire un merge sur un repository cloné
+git merge origin/master
+//git pull = git fetch + git merge
+//Pour pouvoir suivre un autre branch k l master sur un repository cloné
+git branch nom_branch origin/nom_branch
+git chekout -b nom_branch origin/nom_branch
+//on peut supprimer cette branch en locale nb:elle restera tjs sur le serveurr
+git branch -d nom_branch 
+//supprimer cette nom_branch sur le serveur nb:elle existera tjs en locale 
+git push origin :nom_branch 
+//supprimer definitivement cette branch
+git push origin --delete nom_branch 
 
 
 
